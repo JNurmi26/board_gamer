@@ -1,0 +1,13 @@
+{% extends "board_gamer/base.html" %}
+
+{% block content %}
+
+    <p>Game: {{ game }}</p>
+
+    {% if game.is_borrowed %}
+        <p>This game has been borrowed.</p>
+    {% else %}
+        <p>This game is free to borrow.</p>
+    {% endif %}
+
+{% endblock content %}
