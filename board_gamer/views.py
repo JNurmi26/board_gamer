@@ -12,3 +12,11 @@ def games(request):
     games = Game.objects.order_by('date_added')
     context = {'games': games}
     return render(request, 'board_gamer/games.html', context)
+
+def game(request, game_id):
+    """Show a single game"""
+    print(game_id)
+    game = Game.objects.get(id=game_id)
+    print(game)
+    context = {'game':game}
+    return render(request, 'board_gamer/game.html', context)
