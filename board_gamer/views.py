@@ -36,3 +36,19 @@ def new_game(request):
     # Display a blank or invalid form.
     context = {'form': form}
     return render(request, 'board_gamer/new_game.html', context)
+
+def edit_game(request, game_id):
+    """Edit an existing game."""
+    game = Game.objects.get(id=game_id)
+
+    if request.method != 'POST':
+        # Initial request, pre-fill form with current game info.
+        form = GameForm(instance=game)
+    else:
+        # POST data submitted, process data.
+        if form.is_valid():
+            form.save
+            return redirect('board_gamer:game', game_id=game.id)
+
+    context = {'game':game, 'form':form}
+    return render(request, 'board_gamer/edit_game.html', context)

@@ -16,4 +16,7 @@ urlpatterns = [
 
     # Page for adding a new board game
     path('new_game/', views.new_game, name='new_game'),
+
+    # Page for editing a game
+    path('edit_entry/<int:game_id>/', views.edit_game, name='edit_game'),
 ]
