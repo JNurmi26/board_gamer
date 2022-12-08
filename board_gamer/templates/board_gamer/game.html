@@ -9,5 +9,9 @@
     {% else %}
         <p>This game is free to borrow.</p>
     {% endif %}
+    
+    <p>
+        <a href="{% url 'board_gamer:edit_game' game.id %}">Edit game</a>
+    </p>
 
 {% endblock content %}
