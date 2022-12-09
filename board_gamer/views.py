@@ -55,8 +55,9 @@ def edit_game(request, game_id):
         form = GameForm(instance=game)
     else:
         # POST data submitted, process data.
+        form = GameForm(instance=game, data=request.POST)
         if form.is_valid():
-            form.save
+            form.save()
             return redirect('board_gamer:game', game_id=game.id)
 
     context = {'game':game, 'form':form}
