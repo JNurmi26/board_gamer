@@ -4,6 +4,8 @@
 
     <p>Game: {{ game }}</p>
 
+    <p>Description: {{ game.description }}</p>
+
     {% if game.is_borrowed %}
         <p>This game has been borrowed.</p>
     {% else %}

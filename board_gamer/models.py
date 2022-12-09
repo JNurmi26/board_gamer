@@ -10,6 +10,7 @@ ACTIVE_CHOICES = [
 class Game(models.Model):
     """A game the user wants to interact with"""
     text = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
     is_borrowed = models.BooleanField(default=False, choices=ACTIVE_CHOICES)
     borrower = models.ForeignKey('Gamer', on_delete=models.PROTECT, blank=True, null=True)
