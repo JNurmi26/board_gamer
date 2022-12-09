@@ -20,9 +20,7 @@ def games(request):
 @login_required
 def game(request, game_id):
     """Show a single game"""
-    print(game_id)
     game = Game.objects.get(id=game_id)
-    # Make sure the game belongs to the current user.
     context = {'game':game}
     return render(request, 'board_gamer/game.html', context)
 
