@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
 from .models import Game
-from .forms import GameForm
+from .forms import GameForm, BorrowForm
 
 # Create your views here.
 def index(request):
@@ -62,3 +62,26 @@ def edit_game(request, game_id):
 
     context = {'game':game, 'form':form}
     return render(request, 'board_gamer/edit_game.html', context)
+
+
+@login_required
+def borrow_game(request, game_id):
+    """Edit an existing game."""
+    game = Game.objects.get(id=game_id)
+    if game.owner != request.user:
+        if game.is_borrowed == True:
+            raise Http404
+
+
+    if request.method != 'POST':
+        # Initial request, pre-fill form with current game info.
+        form = BorrowForm(instance=game)
+    else:
+        # POST data submitted, process data.
+        form = BorrowForm(instance=game, data=request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('board_gamer:game', game_id=game.id)
+
+    context = {'game':game, 'form':form}
+    return render(request, 'board_gamer/borrow_game.html', context)

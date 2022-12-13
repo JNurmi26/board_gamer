@@ -6,9 +6,16 @@
 
     <ul>
         {% for game in games %}
-            <li>
-                <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} {{ game.is_borrowed }}</a>
-            </li>
+            {% if game.is_borrowed %}
+                <li>
+                    <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} In use </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} Free </a>
+                </li>
+            {% endif %}
+            
         {% empty %}
             <li>No games have been added yet.</li>
         {% endfor %}

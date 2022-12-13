@@ -7,3 +7,9 @@ class GameForm(forms.ModelForm):
         model = Game
         fields = ['text', 'description']
         labels = {'text':''}
+        
+
+class BorrowForm(forms.ModelForm):
+    class Meta:
+        model = Game
+        fields = ['is_borrowed',]
