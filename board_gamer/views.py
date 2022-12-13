@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
-from .models import Game
+from .models import Game, Gamer
 from .forms import GameForm, BorrowForm
 
 # Create your views here.
@@ -66,9 +66,8 @@ def edit_game(request, game_id):
 
 @login_required
 def borrow_game(request, game_id):
-    """Edit an existing game."""
+    """Borrow an existing game."""
     game = Game.objects.get(id=game_id)
-
 
     if request.method != 'POST':
         # Initial request, pre-fill form with current game info.
