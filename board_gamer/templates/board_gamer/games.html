@@ -1,26 +1,28 @@
 {% extends "board_gamer/base.html" %}
 
-{% block content %}
+{% block page_header %}
+    <h1>Games</h1>
+{% endblock page_header %}
 
-    <p>Games</p>
+{% block content %}
 
     <ul>
         {% for game in games %}
             {% if game.is_borrowed %}
-                <li>
+                <li><h3>
                     <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} | In use </a>
-                </li>
+                </h3></li>
             {% else %}
-                <li>
+                <li><h3>
                     <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} | Free </a>
-                </li>
+                </h3></li>
             {% endif %}
             
         {% empty %}
-            <li>No games have been added yet.</li>
+            <li><h3>No games have been added yet.</h3></li>
         {% endfor %}
     </ul>
 
-    <a href="{% url 'board_gamer:new_game' %}">Add a new game</a>
+    <h3><a href="{% url 'board_gamer:new_game' %}">Add a new game</a></h3>
 
 {% endblock content %}
