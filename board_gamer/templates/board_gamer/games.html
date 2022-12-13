@@ -8,11 +8,11 @@
         {% for game in games %}
             {% if game.is_borrowed %}
                 <li>
-                    <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} In use </a>
+                    <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} | In use </a>
                 </li>
             {% else %}
                 <li>
-                    <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} Free </a>
+                    <a href="{% url 'board_gamer:game' game.id %}"> {{ game }} | Free </a>
                 </li>
             {% endif %}
             
