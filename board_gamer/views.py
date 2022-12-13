@@ -68,9 +68,6 @@ def edit_game(request, game_id):
 def borrow_game(request, game_id):
     """Edit an existing game."""
     game = Game.objects.get(id=game_id)
-    if game.owner != request.user:
-        if game.is_borrowed == True:
-            raise Http404
 
 
     if request.method != 'POST':
