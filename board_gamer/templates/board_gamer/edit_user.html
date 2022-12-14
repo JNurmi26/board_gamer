@@ -1,0 +1,14 @@
+{% extends "board_gamer/base.html" %}
+
+{% block content %}
+    
+
+    <p>Edit user:</p>
+
+    <form action="{% url 'board_gamer:edit_user' %}" method='post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Save changes</button>
+    </form>
+
+{% endblock content %}
