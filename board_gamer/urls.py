@@ -22,4 +22,7 @@ urlpatterns = [
     
     # Page for borrowing a game
     path('borrow_entry/<int:game_id>/', views.borrow_game, name='borrow_game'),
+    
+    # Page for editing user information
+    path('edit_user/', views.edit_user, name='edit_user')
 ]
